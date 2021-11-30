@@ -8,12 +8,12 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "main.[hash].js",
+    filename: "main.[contenthash].js",
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "./imgs/[name].[hash].[ext]",
+    assetModuleFilename: "./imgs/[name].[contenthash].[ext]",
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].[hash].css" }),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
     new CleanWebpackPlugin(),
   ],
   module: {
