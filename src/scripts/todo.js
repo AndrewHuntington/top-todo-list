@@ -1,14 +1,32 @@
+import { v4 as uuidv4 } from "uuid";
+
 const todo = (() => {
-  const create = (
+  const create = ({
     title,
-    description = "",
+    details = "none",
+    project = "Inbox",
     dueDate = "",
     priority = "low",
-    completed = false
-  ) => {
+    completed = false,
+    id = uuidv4(),
+  }) => {
     const getTitle = () => title;
+    const getDetails = () => details;
+    const getProject = () => project;
+    const getDueDate = () => dueDate;
+    const getPriority = () => priority;
+    const getStatus = () => completed;
+    const getId = () => id;
 
-    return { getTitle };
+    return {
+      getTitle,
+      getDetails,
+      getProject,
+      getDueDate,
+      getPriority,
+      getStatus,
+      getId,
+    };
   };
 
   return { create };

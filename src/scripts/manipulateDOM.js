@@ -1,3 +1,5 @@
+import todoStore from "./todoStore";
+
 const manipulateDOM = (() => {
   const addToTodoList = (todo) => {
     const wrapper = document.createElement("div");
@@ -13,6 +15,7 @@ const manipulateDOM = (() => {
     editBtn.classList.add("todo--edit");
     deleteBtn.classList.add("todo--delete");
 
+    console.log(todo.getTitle());
     todoItem.textContent = todo.getTitle();
     document.querySelector("#todo__list").appendChild(wrapper);
     wrapper.appendChild(todoItem);
@@ -20,7 +23,13 @@ const manipulateDOM = (() => {
     todoItem.appendChild(deleteBtn);
   };
 
-  return { addToTodoList };
+  const createList = () => {
+    todoStore.todos.forEach((todo) => {
+      addToTodoList(todo);
+    });
+  };
+
+  return { addToTodoList, createList };
 })();
 
 export default manipulateDOM;
