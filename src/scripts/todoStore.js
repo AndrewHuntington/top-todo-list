@@ -9,7 +9,7 @@ export default {
       dueDate: "",
       priority: "low",
       completed: false,
-      id: 1,
+      id: "1",
     }),
     todo.create({
       title: "Renew drivers' license",
@@ -18,7 +18,7 @@ export default {
       dueDate: "",
       priority: "high",
       completed: true,
-      id: 2,
+      id: "2",
     }),
     todo.create({
       title: "Grind Leetcode",
@@ -27,7 +27,7 @@ export default {
       dueDate: "",
       priority: "high",
       completed: false,
-      id: 3,
+      id: "3",
     }),
   ],
 };

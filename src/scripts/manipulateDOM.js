@@ -23,8 +23,9 @@ const manipulateDOM = (() => {
     });
 
     deleteBtn.addEventListener("click", (e) => {
-      const id = +e.target.parentNode.id;
+      const id = e.target.parentNode.id;
       todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
+      console.warn("Deleted!");
       refreshList();
     });
 
