@@ -7,7 +7,7 @@ const reducer = (state = [], action) => {
     case ADD:
       return [...state, action.payload];
     case DELETE:
-      return state.filter((todo) => todo.id !== action.payload);
+      return state.filter((todo) => todo.getId() !== action.payload);
     case EDIT:
       return state.map((todo) => {
         if (todo.getId() === action.payload.id) {
