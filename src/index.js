@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.css";
 import todo from "./scripts/todo";
 import manipulateDOM from "./scripts/manipulateDOM";
-import todoStore from "./scripts/todoStore";
-import { reducer, ADD } from "./scripts/todoStoreReducer";
+import todoStore from "./stores/todoStore";
+import { reducer, ADD } from "./reducers/todoStoreReducer";
 
 // TODO:
 // 1. Implement Delete functionality - DONE
@@ -15,7 +15,7 @@ import { reducer, ADD } from "./scripts/todoStoreReducer";
 // * 6. Refactor manipulateDOM.addToTodoList()
 
 // TODO: Uncomment
-// manipulateDOM.createList();
+manipulateDOM.createList();
 
 const addButton = document.querySelector(".button--add");
 const input = document.querySelector(".input");

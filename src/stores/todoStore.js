@@ -1,4 +1,4 @@
-import todo from "./todo";
+import todo from "../scripts/todo";
 
 export default {
   todos: [
@@ -15,7 +15,7 @@ export default {
       title: "Renew drivers' license",
       details: "none",
       project: "Inbox",
-      dueDate: "",
+      dueDate: "12/25/2021",
       priority: "high",
       completed: true,
       id: "2",
