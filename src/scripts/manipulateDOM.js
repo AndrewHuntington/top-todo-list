@@ -15,8 +15,8 @@ const manipulateDOM = (() => {
 
     wrapper.classList.add("todo-wrapper");
     todoItem.classList.add("todo__item");
-    editBtn.classList.add("button", "button--edit");
-    deleteBtn.classList.add("button", "button--delete");
+    editBtn.classList.add("button", "todo-item__button--edit");
+    deleteBtn.classList.add("button", "todo-item__button--delete");
 
     editBtn.addEventListener("click", (e) => {
       console.log("edit");
@@ -30,7 +30,7 @@ const manipulateDOM = (() => {
     });
 
     todoItem.textContent = todo.getTitle();
-    document.querySelector("#todo__list").appendChild(wrapper);
+    document.querySelector("#todo-list").appendChild(wrapper);
     wrapper.appendChild(todoItem);
     todoItem.appendChild(editBtn);
     todoItem.appendChild(deleteBtn);
@@ -43,7 +43,7 @@ const manipulateDOM = (() => {
   };
 
   const deleteList = () => {
-    const todoList = document.querySelector("#todo__list");
+    const todoList = document.querySelector("#todo-list");
     todoList.innerHTML = "";
   };
 

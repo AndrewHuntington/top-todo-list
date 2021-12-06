@@ -1,3 +1,5 @@
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.css";
 import todo from "./scripts/todo";
 import manipulateDOM from "./scripts/manipulateDOM";
@@ -12,7 +14,8 @@ import { reducer, ADD } from "./scripts/todoStoreReducer";
 // 5. Clean up index.js
 // * 6. Refactor manipulateDOM.addToTodoList()
 
-manipulateDOM.createList();
+// TODO: Uncomment
+// manipulateDOM.createList();
 
 const addButton = document.querySelector(".button--add");
 const input = document.querySelector(".input");
