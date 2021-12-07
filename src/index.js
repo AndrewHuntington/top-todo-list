@@ -12,23 +12,36 @@ import { reducer, ADD } from "./reducers/todoStoreReducer";
 // 3. Display all todo info in the DOM
 // 4. Improve Add functionality to accept all parameters
 // 5. Clean up index.js
-// * 6. Refactor manipulateDOM.addToTodoList()
+//  6. Refactor manipulateDOM.addToTodoList() - DONE (for now)
 
-// TODO: Uncomment
 manipulateDOM.createList();
 
 const addButton = document.querySelector(".button--add");
-const input = document.querySelector(".input");
+const inputs = document.querySelectorAll(".input");
+const [title, details, project, dueDate, priority] = inputs;
 
 // Clear input on page load
-if (input.value !== "") {
-  input.value = "";
-}
+//TODO: Make function
+inputs.forEach((input) => {
+  if (input.value !== "") input.value = "";
+  if (input.checked) input.checked = false;
+});
 
 addButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const newTodo = todo.create({ title: input.value });
+  const newTodo = todo.create({
+    title: title.value,
+    details: details.value,
+    project: project.value,
+    dueDate: dueDate.value,
+    priority: priority.checked ? "high" : "low",
+  });
   manipulateDOM.addToTodoList(newTodo);
   todoStore.todos = reducer(todoStore.todos, { type: ADD, payload: newTodo });
-  input.value = "";
+
+  // TODO: Refactor
+  inputs.forEach((input) => {
+    if (input.value !== "") input.value = "";
+    if (input.checked) input.checked = false;
+  });
 });

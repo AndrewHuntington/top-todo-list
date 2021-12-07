@@ -28,7 +28,46 @@
   <body>
     <h1>TODO LIST</h1>
     <form action="">
-      <input class="input" type="text" name="todo" placeholder="todo" />
+      <div class="mb-3">
+        <input
+          class="input form-control"
+          type="text"
+          id="input__todo-title"
+          placeholder="Title: Go to the store"
+        />
+      </div>
+      <div class="mb-3">
+        <textarea
+          class="input form-control"
+          rows="3"
+          id="input__todo-details"
+          placeholder="Details: Make sure to pick up milk and eggs"
+        >
+        </textarea>
+      </div>
+      <div class="mb-3">
+        <input
+          class="input form-control"
+          type="text"
+          id="input__todo-project"
+          placeholder="Project Name"
+        />
+      </div>
+      <div class="mb-3">
+        <input class="input form-control" type="date" id="input__todo-due" />
+      </div>
+      <div class="form-check">
+        <input
+          class="input form-check-input"
+          type="checkbox"
+          value=""
+          id="input__todo-priority"
+        />
+        <label class="form-check-label" for="input__todo-priority">
+          High Priority
+        </label>
+      </div>
+
       <button class="button button--add">Add</button>
     </form>
 
