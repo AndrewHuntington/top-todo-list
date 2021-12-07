@@ -6,13 +6,28 @@ const manipulateDOM = (() => {
     //TODO: Look into refactoring
     const wrapper = document.createElement("div");
     wrapper.classList.add("todo-wrapper");
+    wrapper.addEventListener("click", (e) => {
+      let target = e.target;
 
-    const editBtn = document.createElement("button");
-    editBtn.innerHTML = "Edit";
-    editBtn.classList.add("button", "todo-item__button--edit");
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerHTML = "Delete";
-    deleteBtn.classList.add("button", "todo-item__button--delete");
+      if (target.classList.contains("todo-item__button--edit")) {
+        handleEdit(e);
+      }
+
+      if (target.classList.contains("todo-item__button--delete")) {
+        handleDelete(e);
+      }
+    });
+
+    const handleEdit = (e) => {
+      console.log("edit", e);
+    };
+
+    const handleDelete = (e) => {
+      const id = e.target.parentNode.parentNode.id;
+      todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
+      console.warn("Deleted!");
+      refreshList();
+    };
 
     // Got too used to JSX, I guess
     wrapper.innerHTML = `
@@ -28,8 +43,8 @@ const manipulateDOM = (() => {
         <label class="form-check-label" for="todo-item__title-${todo.getId()}"
           >${todo.getTitle()}</label
         >
-        ${editBtn.outerHTML}
-        ${deleteBtn.outerHTML}
+        <button class="button todo-item__button--edit">Edit</button>
+        <button class="button todo-item__button--delete">Delete</button>
       </div>
       <div class="todo-item__details">${todo.getDetails()}</div>
       <div class="todo-item__project">Project: ${todo.getProject()}</div>
@@ -37,17 +52,6 @@ const manipulateDOM = (() => {
       <div class="todo-item__priority">${todo.getPriority()}</div>
     </li>
     `;
-
-    editBtn.addEventListener("click", (e) => {
-      console.log("edit");
-    });
-
-    deleteBtn.addEventListener("click", (e) => {
-      const id = e.target.parentNode.id;
-      todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
-      console.warn("Deleted!");
-      refreshList();
-    });
 
     document.querySelector("#todo-list").appendChild(wrapper);
   };
