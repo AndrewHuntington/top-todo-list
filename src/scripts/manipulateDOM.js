@@ -2,8 +2,7 @@ import todoStore from "../stores/todoStore";
 import { reducer, DELETE, EDIT } from "../reducers/todoStoreReducer";
 
 const manipulateDOM = (() => {
-  const createTodoWrapper = () => {
-    // create the click handlers first
+  const createBtnHandlers = () => {
     const handleEdit = (e) => {
       console.log("edit", e);
     };
@@ -13,6 +12,13 @@ const manipulateDOM = (() => {
       todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
       refreshList();
     };
+
+    return { handleEdit, handleDelete };
+  };
+
+  const createTodoWrapper = () => {
+    // create the click handlers first
+    const { handleEdit, handleDelete } = createBtnHandlers();
 
     // creates a wrapper div for each todo
     const wrapper = document.createElement("div");
