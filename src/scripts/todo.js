@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 const todo = (() => {
   const create = ({
     title,
-    details = "none",
-    project = "Inbox",
-    dueDate = "",
-    priority = "low",
+    details,
+    project,
+    dueDate,
+    priority,
     completed = false,
     id = uuidv4(),
   }) => {

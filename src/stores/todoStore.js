@@ -13,7 +13,7 @@ export default {
     }),
     todo.create({
       title: "Renew drivers' license",
-      details: "none",
+      details: "",
       project: "Inbox",
       dueDate: "12/25/2021",
       priority: "high",
@@ -22,7 +22,7 @@ export default {
     }),
     todo.create({
       title: "Grind Leetcode",
-      details: "none",
+      details: "Because I'm not allowed a life",
       project: "Coding",
       dueDate: "",
       priority: "high",
