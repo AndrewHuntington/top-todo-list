@@ -2,7 +2,19 @@ import todoStore from "../stores/todoStore";
 import { reducer, DELETE, EDIT } from "../reducers/todoStoreReducer";
 
 const manipulateDOM = (() => {
-  const addToTodoList = (todo) => {
+  const createTodoWrapper = () => {
+    // create the click handlers first
+    const handleEdit = (e) => {
+      console.log("edit", e);
+    };
+
+    const handleDelete = (e) => {
+      const id = e.target.parentNode.parentNode.id;
+      todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
+      refreshList();
+    };
+
+    // creates a wrapper div for each todo
     const wrapper = document.createElement("div");
     wrapper.classList.add("todo-wrapper");
     wrapper.addEventListener("click", (e) => {
@@ -17,16 +29,11 @@ const manipulateDOM = (() => {
       }
     });
 
-    const handleEdit = (e) => {
-      console.log("edit", e);
-    };
+    return wrapper;
+  };
 
-    const handleDelete = (e) => {
-      const id = e.target.parentNode.parentNode.id;
-      todoStore.todos = reducer(todoStore.todos, { type: DELETE, payload: id });
-      console.warn("Deleted!");
-      refreshList();
-    };
+  const addToTodoList = (todo) => {
+    const wrapper = createTodoWrapper();
 
     // Got too used to JSX, I guess
     wrapper.innerHTML = `
