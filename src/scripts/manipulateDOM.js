@@ -3,7 +3,6 @@ import { reducer, DELETE, EDIT } from "../reducers/todoStoreReducer";
 
 const manipulateDOM = (() => {
   const addToTodoList = (todo) => {
-    //TODO: Look into refactoring
     const wrapper = document.createElement("div");
     wrapper.classList.add("todo-wrapper");
     wrapper.addEventListener("click", (e) => {
