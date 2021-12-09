@@ -4,11 +4,16 @@ import "./styles/main.css";
 import startup from "./scripts/startup";
 
 // TODO:
-// 1. Implement Delete functionality - DONE
-// 2. Implement Edit functionality
-// 3. Display all todo info in the DOM
-// 4. Improve Add functionality to accept all parameters
-// 5. Clean up index.js - DONE
-//  6. Refactor manipulateDOM.addToTodoList() - DONE (for now)
+// 1. Implement Edit functionality
+// 2. Display projects in collapsable sidebar
+// 3. Filter shown todos by project
+// 4. Allow sorting by date
+// 5. Add localStorage
+// 6. Style app
 
-startup();
+// Finished
+// Implement Delete functionality - DONE
+// Display all todo info in the DOM - DONE
+// Improve Add functionality to accept all parameters -DONE
+// Clean up index.js - DONE
+// Refactor manipulateDOM.addToTodoList() - DONE (for now)
