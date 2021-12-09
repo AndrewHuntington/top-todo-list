@@ -4,7 +4,66 @@ import { reducer, DELETE, EDIT } from "../reducers/todoStoreReducer";
 const manipulateDOM = (() => {
   const createBtnHandlers = () => {
     const handleEdit = (e) => {
-      console.log("edit", e);
+      const id = e.target.parentNode.parentNode.id;
+      const todoDOMElement = document.getElementById(id);
+      todoDOMElement.classList.toggle("hide-me");
+
+      // TODO: make into own function
+      const todoFromStore = todoStore.todos.find((t) => t.getId() === id);
+      const editForm = document.createElement("form");
+      editForm.innerHTML = `
+      <div>
+        <input
+          class="input form-control"
+          type="text"
+          id="input__todo-title"
+          placeholder="Title: Go to the store"
+          value="${todoFromStore.getTitle()}"
+        />
+      </div>
+      <div>
+        <textarea
+          class="input form-control"
+          rows="3"
+          id="input__todo-details"
+          placeholder="Details: Make sure to pick up milk and eggs"
+          value="${todoFromStore.getDetails()}"
+        >
+        </textarea>
+      </div>
+      <div>
+        <input
+          class="input form-control"
+          type="text"
+          id="input__todo-project"
+          placeholder="Project Name"
+          value="${todoFromStore.getProject()}"
+        />
+      </div>
+      <div class="mb-3">
+        <input 
+          class="input form-control" 
+          type="date" 
+          id="input__todo-due" 
+          value="${todoFromStore.getDueDate()}" 
+        />
+      </div>
+      <div class="form-check">
+        <input
+          class="input form-check-input"
+          type="checkbox"
+          id="input__todo-priority"
+          ${todoFromStore.getPriority() === "high" ? "checked" : ""}
+        />
+        <label class="form-check-label" for="input__todo-priority">
+          High Priority
+        </label>
+      </div>
+
+      <button class="button button--accept">Accept</button>
+      <button class="button button--cancel">Cancel</button>
+      `;
+      todoDOMElement.parentElement.appendChild(editForm);
     };
 
     const handleDelete = (e) => {

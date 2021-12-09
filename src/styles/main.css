@@ -7,3 +7,7 @@
 .form {
   margin-top: 4rem;
 }
+
+.hide-me {
+  display: none;
+}
