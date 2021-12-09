@@ -27,9 +27,8 @@ const manipulateDOM = (() => {
           rows="3"
           id="input__todo-details"
           placeholder="Details: Make sure to pick up milk and eggs"
-          value="${todoFromStore.getDetails()}"
-        >
-        </textarea>
+          
+        >${todoFromStore.getDetails()}</textarea>
       </div>
       <div>
         <input
